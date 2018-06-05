@@ -1,0 +1,14 @@
+function maskImageFFT(inputImage, numberOfClicks, filterSize)
+img = imread(inputImage);
+img_gray = rgb2gray(img);
+imshow(img_gray)
+w = waitforbuttonpress;
+if w==0 || w==1
+    
+title('Original Image')
+imagesc(abs(fftshift(fft2(img_gray))))
+title('Fourier spectrum')
+hold on
+[x,y] = ginput(numberOfClicks);
+scatter(x,y,filterSize,'r', 'filled')
+end
